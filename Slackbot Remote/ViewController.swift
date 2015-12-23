@@ -10,6 +10,12 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBAction func sendMessage(sender: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let url = defaults.objectForKey("slackbotUrl")
+        let channel = defaults.objectForKey("channel")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
