@@ -12,8 +12,18 @@ class ViewController: NSViewController {
 
     @IBAction func sendMessage(sender: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let url = defaults.objectForKey("slackbotUrl")
-        let channel = defaults.objectForKey("channel")
+        let channel = defaults.objectForKey("channel") as! String
+        
+        let url = NSURL(string: defaults.objectForKey("slackbotUrl") as! String)
+        var request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        var session = NSURLSession.sharedSession()
+        
+        var err: NSError?
+        
+        task = session.dataTaskWithRequest(request) {
+            
+        }
     }
     
     override func viewDidLoad() {
