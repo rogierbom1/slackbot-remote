@@ -9,11 +9,41 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    
+    
+    @IBOutlet weak var messageTextField: NSTextField!
 
     @IBAction func sendMessage(sender: AnyObject) {
+        
         let defaults = NSUserDefaults.standardUserDefaults()
-        let url = defaults.objectForKey("slackbotUrl")
-        let channel = defaults.objectForKey("channel")
+        let slackbotUrl = defaults.objectForKey("slackbotUrl") as! String
+        let channel = defaults.objectForKey("channel") as! String
+        
+        let url = NSURL(string: slackbotUrl + channel)!
+        //let url = NSURL(string: "https://www.google.nl")!
+        let session = NSURLSession.sharedSession()
+        let message = messageTextField.stringValue
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        request.HTTPBody = message.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let task = session.dataTaskWithRequest(request) {
+            (let data, let response, let error) in
+            
+            guard let _:NSData = data, let _:NSURLResponse = response where error == nil else {
+                print("error")
+                return
+            }
+            
+            let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print(dataString)
+            
+        }
+        
+        task.resume()
     }
     
     override func viewDidLoad() {
