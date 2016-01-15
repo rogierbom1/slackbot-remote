@@ -11,20 +11,25 @@ import Cocoa
 class ViewController: NSViewController {
     
     
+    @IBOutlet weak var channelTextField: NSTextField!
     @IBOutlet weak var messageTextField: NSTextField!
 
     @IBAction func sendMessage(sender: AnyObject) {
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        let slackbotUrl = defaults.objectForKey("slackbotUrl") as! String
-        let channel = defaults.objectForKey("channel") as! String
+        let url = NSURL(string: defaults.objectForKey("slackbotUrl") as! String)
         
-        let url = NSURL(string: slackbotUrl + channel)!
-        //let url = NSURL(string: "https://www.google.nl")!
+        let components = NSURLComponents(URL: url!, resolvingAgainstBaseURL: true)
+        
+        components?.queryItems = [
+            NSURLQueryItem(name: "token", value: defaults.objectForKey("token") as? String),
+            NSURLQueryItem(name: "channel", value: channelTextField.stringValue)
+        ]
+        
         let session = NSURLSession.sharedSession()
         let message = messageTextField.stringValue
         
-        let request = NSMutableURLRequest(URL: url)
+        let request = NSMutableURLRequest(URL: (components?.URL)!)
         request.HTTPMethod = "POST"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
