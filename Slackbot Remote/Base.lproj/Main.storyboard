@@ -746,19 +746,59 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Slackbot_Remote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="210"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="139"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Okh-2M-rqe">
-                                <rect key="frame" x="20" y="54" width="440" height="56"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="nGL-rq-bDm">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Okh-2M-rqe">
+                                <rect key="frame" x="20" y="29" width="440" height="56"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="nGL-rq-bDm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCE-a3-yAA">
-                                <rect key="frame" x="14" y="13" width="81" height="32"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ylu-RN-U6p">
+                                <rect key="frame" x="18" y="71" width="73" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="pVs-ZR-1gE"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Message" id="Cbv-lg-VmG">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LhP-Vu-DBt">
+                                <rect key="frame" x="18" y="115" width="92" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="y7V-87-TKC"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Channel" id="o5l-ah-WYH">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField identifier="textFieldChannel" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H08-Wk-U8t">
+                                <rect key="frame" x="20" y="91" width="175" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="n3n-WQ-kfR"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="#channel" bezelStyle="round" id="NTk-dK-Qto">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView translatesAutoresizingMaskIntoConstraints="NO" id="HYi-4s-qMi">
+                                <rect key="frame" x="412" y="84" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="hSa-tF-fBU"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="slackbot_128" id="gAC-wd-E0d"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lCE-a3-yAA">
+                                <rect key="frame" x="14" y="9" width="81" height="32"/>
                                 <buttonCell key="cell" type="push" title="Send" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DPb-F4-IAI">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -767,31 +807,26 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ylu-RN-U6p">
-                                <rect key="frame" x="18" y="118" width="73" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Message" id="Cbv-lg-VmG">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LhP-Vu-DBt">
-                                <rect key="frame" x="18" y="173" width="92" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Channel" id="o5l-ah-WYH">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField identifier="textFieldChannel" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H08-Wk-U8t">
-                                <rect key="frame" x="20" y="143" width="175" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="NTk-dK-Qto">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="lCE-a3-yAA" firstAttribute="top" secondItem="Ylu-RN-U6p" secondAttribute="bottom" constant="34" id="5BE-M8-tDV"/>
+                            <constraint firstItem="LhP-Vu-DBt" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="7" id="5gn-Z2-xBF"/>
+                            <constraint firstItem="HYi-4s-qMi" firstAttribute="top" secondItem="LhP-Vu-DBt" secondAttribute="top" id="8Pf-GV-x23"/>
+                            <constraint firstItem="lCE-a3-yAA" firstAttribute="trailing" secondItem="Ylu-RN-U6p" secondAttribute="trailing" id="9Yq-7X-65q"/>
+                            <constraint firstItem="HYi-4s-qMi" firstAttribute="trailing" secondItem="Okh-2M-rqe" secondAttribute="trailing" id="BfZ-I1-Jfo"/>
+                            <constraint firstItem="Okh-2M-rqe" firstAttribute="leading" secondItem="Ylu-RN-U6p" secondAttribute="leading" id="DJU-E3-bVv"/>
+                            <constraint firstAttribute="bottom" secondItem="lCE-a3-yAA" secondAttribute="bottom" constant="16" id="Hsd-mE-XiL"/>
+                            <constraint firstItem="Ylu-RN-U6p" firstAttribute="leading" secondItem="H08-Wk-U8t" secondAttribute="leading" id="I8x-YS-9yh"/>
+                            <constraint firstItem="Okh-2M-rqe" firstAttribute="leading" secondItem="lCE-a3-yAA" secondAttribute="leading" id="L0j-CD-vcO"/>
+                            <constraint firstAttribute="trailing" secondItem="HYi-4s-qMi" secondAttribute="trailing" constant="20" symbolic="YES" id="LUi-HV-wRT"/>
+                            <constraint firstAttribute="bottom" secondItem="Okh-2M-rqe" secondAttribute="bottom" constant="29" id="Pr1-cy-LF2"/>
+                            <constraint firstItem="H08-Wk-U8t" firstAttribute="top" secondItem="LhP-Vu-DBt" secondAttribute="bottom" constant="2" id="RBs-lj-cR9"/>
+                            <constraint firstAttribute="bottom" secondItem="HYi-4s-qMi" secondAttribute="bottom" constant="84" id="cFE-Ts-lyv"/>
+                            <constraint firstItem="LhP-Vu-DBt" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="ePt-AO-DMU"/>
+                            <constraint firstItem="LhP-Vu-DBt" firstAttribute="leading" secondItem="H08-Wk-U8t" secondAttribute="leading" id="ndQ-Gw-nV6"/>
+                            <constraint firstItem="Ylu-RN-U6p" firstAttribute="top" secondItem="H08-Wk-U8t" secondAttribute="bottom" constant="3" id="zk7-tg-CvC"/>
+                            <constraint firstItem="Okh-2M-rqe" firstAttribute="top" secondItem="H08-Wk-U8t" secondAttribute="bottom" constant="6" id="zr6-fb-rBY"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="channelTextField" destination="H08-Wk-U8t" id="7qs-Tk-1bN"/>
@@ -800,7 +835,10 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="625"/>
+            <point key="canvasLocation" x="75" y="589.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="slackbot_128" width="128" height="128"/>
+    </resources>
 </document>

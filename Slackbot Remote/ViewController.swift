@@ -21,6 +21,7 @@ class ViewController: NSViewController {
         
         let components = NSURLComponents(URL: url!, resolvingAgainstBaseURL: true)
         
+        // Set querystring parts.
         components?.queryItems = [
             NSURLQueryItem(name: "token", value: defaults.objectForKey("token") as? String),
             NSURLQueryItem(name: "channel", value: channelTextField.stringValue)
@@ -45,6 +46,9 @@ class ViewController: NSViewController {
             
             let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print(dataString)
+            
+            // Clear textfield after sending.
+            self.messageTextField.stringValue = ""
             
         }
         
