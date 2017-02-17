@@ -14,43 +14,43 @@ class ViewController: NSViewController {
     @IBOutlet weak var channelTextField: NSTextField!
     @IBOutlet weak var messageTextField: NSTextField!
 
-    @IBAction func sendMessage(sender: AnyObject) {
+    @IBAction func sendMessage(_ sender: AnyObject) {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let url = NSURL(string: defaults.objectForKey("slackbotUrl") as! String)
+        let defaults = UserDefaults.standard
+        let url = URL(string: defaults.object(forKey: "slackbotUrl") as! String)
         
-        let components = NSURLComponents(URL: url!, resolvingAgainstBaseURL: true)
+        var components = URLComponents(url: url!, resolvingAgainstBaseURL: true)
         
         // Set querystring parts.
         components?.queryItems = [
-            NSURLQueryItem(name: "token", value: defaults.objectForKey("token") as? String),
-            NSURLQueryItem(name: "channel", value: channelTextField.stringValue)
+            URLQueryItem(name: "token", value: defaults.object(forKey: "token") as? String),
+            URLQueryItem(name: "channel", value: channelTextField.stringValue)
         ]
         
-        let session = NSURLSession.sharedSession()
+        let session = URLSession.shared
         let message = messageTextField.stringValue
         
-        let request = NSMutableURLRequest(URL: (components?.URL)!)
-        request.HTTPMethod = "POST"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        let request = NSMutableURLRequest(url: (components?.url)!)
+        request.httpMethod = "POST"
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         
-        request.HTTPBody = message.dataUsingEncoding(NSUTF8StringEncoding)
+        request.httpBody = message.data(using: String.Encoding.utf8)
         
-        let task = session.dataTaskWithRequest(request) {
-            (let data, let response, let error) in
+        let task = session.dataTask(with: request, completionHandler: {
+            (data, response, error) in
             
-            guard let _:NSData = data, let _:NSURLResponse = response where error == nil else {
+            guard let _:Data = data, let _:URLResponse = response, error == nil else {
                 print("error")
                 return
             }
             
-            let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            let dataString = NSString(data: data!, encoding: String.Encoding.utf8)
             print(dataString)
             
             // Clear textfield after sending.
             self.messageTextField.stringValue = ""
             
-        }
+        }) 
         
         task.resume()
     }
